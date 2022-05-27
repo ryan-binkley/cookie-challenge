@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "node server starter kit",
   "main": "server.js",
+  "type": "module",
   "dependencies": {
-    "http": "0.0.1-security"
+    "nodemon": "^2.0.16"
   },
-  "devDependencies": {},
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "James Kelley, Galvanize",
