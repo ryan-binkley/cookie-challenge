@@ -10,13 +10,13 @@ Fork and clone [this](https://github.com/gSchool/usaf-sdi-node-server-starter) r
 
 ```js 
 const server = http.createServer((request, response) => {
-  let path = request.path.split('/')
-  if (path[0] === undefined) {
+  let url = request.url.split('/');
+  if (url[1] === '' ) {
     if (request.method === 'GET') {
       response.end("Hello World");
     }
   }
-  response.statusCode(404);
+  response.statusCode = 404;
   response.end();
 });
 ```
