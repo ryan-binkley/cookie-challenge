@@ -1,19 +1,16 @@
-import http from 'node:http';
+import express from "express";
+import cookieSession from 'cookie-session';
+import cookieParser from 'cookie-parser';
+var app = express();
 
-let HOST = "localhost";
-let PORT = 3000;
-
-const server = http.createServer((request, response) => {
-  let url = request.url.split('/');
-  if (url[1] === '' ) {
-    if (request.method === 'GET') {
-      response.end(`Hello, Galvanize!`);
-    }
-  }
-  response.statusCode = 404;
-  response.end();
+app.use(cookieParser())
+app.get('/login', function(req, res) {
+  res.cookie('name', 'someName');
+  res.send("Your name has been logged.");
 });
 
-server.listen(PORT, HOST, () => {
-  console.log(`Server running on ${HOST}:${PORT}`);
+app.get('/hello', function(req, res) {
+  res.send(`Hello ${req.cookies.name}.`);
 });
+
+app.listen(8080);
